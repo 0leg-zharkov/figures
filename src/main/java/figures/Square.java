@@ -2,6 +2,7 @@ package figures;
 
 import point.Point;
 
+import javax.print.DocFlavor;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +14,7 @@ public class Square extends Figure {
     protected Point pointB;
     protected Point pointC;
     protected Point pointD;
+    double sq;
 
     public Square(List<Point> points) {
         pointA = points.get(0);
@@ -45,6 +47,10 @@ public class Square extends Figure {
                 + super.section(pointC, pointD)
                 + super.section(pointD, pointA);
         super.perimeter(per);
+    }
+
+    public double getSq() {
+        return sq;
     }
 
     protected boolean returnDiag() {

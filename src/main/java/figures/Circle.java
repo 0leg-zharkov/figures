@@ -34,7 +34,7 @@ public class Circle extends Figure {
 
     @Override
     public void perimeter() {
-        double per = Math.PI * r;
+        double per = TWO * Math.PI * r;
         super.perimeter(per);
     }
 }

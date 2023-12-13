@@ -18,7 +18,7 @@ public class Rectangle extends Square {
         boolean areSidesEqls = super.section(pointA, pointB) == super.section(pointC, pointD)
                 && super.section(pointB, pointC) == super.section(pointD, pointA);
         boolean isNinetyDegree = isRightAngle(pointA, pointB, pointD);
-        boolean check = diag && areSidesEqls &&isNinetyDegree;
+        boolean check = diag && areSidesEqls && isNinetyDegree;
         isValid = check;
         super.coordinates(check ? VALID : INVALID);
     }
