@@ -21,13 +21,13 @@ public class Triangle extends Figure {
         pointA = points.get(0);
         pointB = points.get(1);
         pointC = points.get(2);
-        ABSide = super.section(pointA, pointB);
-        BCSide = super.section(pointB, pointC);
-        CASide = super.section(pointC, pointA);
+        isAmount = points.size() == 3;
+        ABSide = section(pointA, pointB);
+        BCSide = section(pointB, pointC);
+        CASide = section(pointC, pointA);
         perimeter = ABSide + BCSide + CASide;
     }
-
-    @Override
+    
     public void coordinates() {
         boolean isWrongCoords = pointA.x() == pointB.x()
                 && pointA.y() == pointB.y()
@@ -36,16 +36,15 @@ public class Triangle extends Figure {
                 && BCSide < ABSide + CASide
                 && CASide < ABSide + BCSide;
         boolean check = checkSides && !isWrongCoords;
-        isValid = check;
-        super.coordinates(check ? VALID : INVALID);
+        isValid = check && isAmount;
+        coordinates(check ? VALID : INVALID);
     }
 
-    @Override
     public void square() {
         double poluperimeter = perimeter / 2;
         sq = Math.sqrt(poluperimeter
                 * (poluperimeter - ABSide) * (poluperimeter - BCSide) * (poluperimeter - CASide));
-        super.square(sq);
+        square(sq);
     }
 
     public double getSquare() {
@@ -55,8 +54,7 @@ public class Triangle extends Figure {
         return sq;
     }
 
-    @Override
     public void perimeter() {
-        super.perimeter(perimeter);
+        perimeter(perimeter);
     }
 }

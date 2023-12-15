@@ -2,17 +2,20 @@ package figures;
 
 import point.Point;
 
+import java.util.Date;
 import java.util.List;
 
 import static nums.AllNums.*;
 
 public class Figure {
 
-    protected boolean isValid;
+    protected boolean isValid = true;
+    protected boolean isAmount;
 
     public void coordinates(String validation) {
         System.out.printf("The figure is %s \n", validation);
     }
+
     public void coordinates() {
         System.out.println("The figure is figure");
     }
@@ -50,6 +53,16 @@ public class Figure {
         double ACz = pointC.z() - pointA.z();
         double angle = ABx * ACx + ABy * ACy + ABz * ACz;
         return angle == 0;
+    }
+
+    protected boolean isParallel(Point pointA, Point pointB, Point pointC, Point pointD) {
+        double ABx = pointB.x() - pointA.x();
+        double ABy = pointB.y() - pointA.y();
+        double ABz = pointB.z() - pointA.z();
+        double CDx = pointC.x() - pointD.x();
+        double CDy = pointC.y() - pointD.y();
+        double CDz = pointC.z() - pointD.z();
+        return ABx / CDx == ABy / CDy && ABx / CDx == ABz / CDz;
     }
 
     protected boolean checkIsDot(Point pointA, Point pointB, Point pointC) {

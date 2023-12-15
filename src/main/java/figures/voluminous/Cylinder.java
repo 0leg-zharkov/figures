@@ -19,34 +19,28 @@ public class Cylinder extends Figure {
         pointA = points.get(0);
         pointB = points.get(1);
         pointC = points.get(2);
+        isAmount = points.size() == THREE;
         isDown = pointA.z() == pointC.z();
     }
 
-    @Override
     public void coordinates() {
 
-        boolean isDot = super.checkIsDot(pointA, pointB, pointC);
+        boolean isDot = checkIsDot(pointA, pointB, pointC);
         boolean isNinetyDegree = isDown ? isRightAngle(pointA, pointB, pointC) : isRightAngle(pointB, pointA, pointC);
         boolean isCircle = pointA.x() == pointB.x()
                 && pointA.y() == pointB.y()
                 && pointA.z() == pointB.z();
-        boolean isConeUp = super.checkIsDot(pointA, pointC);
-        boolean isConeDown = super.checkIsDot(pointB, pointC);
+        boolean isConeUp = checkIsDot(pointA, pointC);
+        boolean isConeDown = checkIsDot(pointB, pointC);
         boolean check = isDot || !isNinetyDegree || isCircle || isConeUp || isConeDown;
-        isValid = !check;
-        super.coordinates(check ? INVALID : VALID);
+        isValid = !check || !isAmount;
+        coordinates(check ? INVALID : VALID);
     }
 
-    @Override
     public void square() {
-        double r = isDown ? super.section(pointA, pointC) : super.section(pointB, pointC);
-        double circlesSquare = TWO * Math.PI * Math.pow(r, TWO);
-        double sq = circlesSquare + TWO * Math.PI * super.section(pointA, pointB) * r;
-        super.square(sq);
-    }
-
-    @Override
-    public void perimeter() {
-        super.perimeter();
+        double radius = isDown ? section(pointA, pointC) : section(pointB, pointC);
+        double circlesSquare = TWO * Math.PI * Math.pow(radius, TWO);
+        double sq = circlesSquare + TWO * Math.PI * section(pointA, pointB) * radius;
+        square(sq);
     }
 }

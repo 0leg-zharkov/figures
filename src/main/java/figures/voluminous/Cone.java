@@ -17,29 +17,23 @@ public class Cone extends Figure {
         pointA = points.get(0);
         pointB = points.get(1);
         pointC = points.get(2);
+        isAmount = points.size() == THREE;
     }
 
-    @Override
     public void coordinates() {
-        boolean isDot = super.checkIsDot(pointA, pointB, pointC);
-        boolean isSection = super.checkIsDot(pointA, pointB);
-        boolean isCircle = super.checkIsDot(pointA, pointC);
-        boolean isNinetyDegree = super.isRightAngle(pointA, pointB, pointC);
+        boolean isDot = checkIsDot(pointA, pointB, pointC);
+        boolean isSection = checkIsDot(pointA, pointB);
+        boolean isCircle = checkIsDot(pointA, pointC);
+        boolean isNinetyDegree = isRightAngle(pointA, pointB, pointC);
         boolean check = isDot || isSection || isCircle || !isNinetyDegree;
-        super.isValid = !check;
-        super.coordinates(check ? INVALID : VALID);
+        isValid = !check || !isAmount;
+        coordinates(check ? INVALID : VALID);
     }
 
-    @Override
     public void square() {
-        double r = super.section(pointA, pointB);
-        double obrazuyush = super.section(pointC, pointB);
-        double sq = Math.PI * r * (r + obrazuyush);
-        super.square(sq);
-    }
-
-    @Override
-    public void perimeter() {
-        super.perimeter();
+        double radius = section(pointA, pointB);
+        double obrazuyush = section(pointC, pointB);
+        double sq = Math.PI * radius * (radius + obrazuyush);
+        square(sq);
     }
 }

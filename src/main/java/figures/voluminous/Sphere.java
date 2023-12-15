@@ -11,29 +11,23 @@ public class Sphere extends Figure {
 
     private Point pointA;
     private Point pointB;
-    private double r;
+    private double radius;
 
     public Sphere(List<Point> points) {
         pointA = points.get(0);
         pointB = points.get(1);
-        r = super.section(pointA, pointB);
+        isAmount = points.size() == TWO;
+        radius = section(pointA, pointB);
     }
 
-    @Override
     public void coordinates() {
         boolean wrongCoords = checkIsDot(pointA, pointB);
-        isValid = !wrongCoords;
-        super.coordinates(wrongCoords ? INVALID : VALID);
+        isValid = !wrongCoords || !isAmount;
+        coordinates(wrongCoords ? INVALID : VALID);
     }
 
-    @Override
     public void square() {
-        double sq = FOUR * Math.pow(r, VOZV) * Math.PI;
-        super.square(sq);
-    }
-
-    @Override
-    public void perimeter() {
-        super.perimeter();
+        double sq = FOUR * Math.pow(radius, VOZV) * Math.PI;
+        square(sq);
     }
 }

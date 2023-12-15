@@ -9,16 +9,15 @@ import static nums.AllNums.*;
 
 public class Polygon extends Figure {
 
-    List<Point> points = new ArrayList<>();
+    private List<Point> points = new ArrayList<>();
 
     public Polygon(List<Point> points) {
         this.points = points;
-        isValid = points.size() >= 3;
+        isValid = points.size() >= THREE;
     }
 
-    @Override
     public void coordinates() {
-        super.coordinates(isValid ? VALID : INVALID);
+        coordinates(isValid ? VALID : INVALID);
     }
 
     @Override
@@ -36,7 +35,7 @@ public class Polygon extends Figure {
                 sq += triangle.getSquare();
                 trianlgePoints.clear();
             }
-            super.square(sq);
+            square(sq);
         }
     }
 
@@ -45,10 +44,10 @@ public class Polygon extends Figure {
         if (isValid) {
             double per = 0;
             for (int i = 0; i < points.size() - 1; i++) {
-                per += super.section(points.get(i), points.get(i + 1));
+                per += section(points.get(i), points.get(i + 1));
             }
-            per += super.section(points.get(0), points.get(points.size() - 1));
-            super.perimeter(per);
+            per += section(points.get(0), points.get(points.size() - 1));
+            perimeter(per);
         } else {
             super.perimeter();
         }

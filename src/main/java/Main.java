@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
 
 public class Main {
 
-    static final Pattern p = Pattern.compile("(\\d\\s\\d)(\\s\\d)?");
+    static final Pattern p = Pattern.compile("(-?\\d+\\s-?\\d+)(\\s-?\\d+)?");
     static Scanner scanner = new Scanner(System.in);
     //не забыть отчистить список
     static List<Point> points = new ArrayList<>();
@@ -30,6 +30,7 @@ public class Main {
             }
             inputCoords();
             if (points.size() == 0) {
+                System.out.println("please, retype");
                 continue;
             }
             output(input);
@@ -39,79 +40,50 @@ public class Main {
     public static void inputCoords() {
         Matcher m;
         String coord;
-        boolean checkInput = true;
+        boolean isWellInputed = true;
         while (true) {
             coord = scanner.nextLine();
-            if (checkInput) {
-                checkInput = true;
-            }
-            if (coord.equals("STOP_INPUT")) {
-                if (!checkInput) {
-                    System.out.println("The figure is invalid \nplease, retype");
+            if (!coord.equals("STOP_INPUT") && isWellInputed) {
+                m = p.matcher(coord);
+                if (m.matches()) {
+                    Point point = new Point(coord);
+                    points.add(point);
+                } else {
+                    isWellInputed = false;
                     points.clear();
                 }
+            } else if (coord.equals("STOP_INPUT")) {
                 break;
-            }
-            m = p.matcher(coord);
-            if (m.matches()) {
-                Point point = new Point(coord);
-                points.add(point);
-            } else {
-                checkInput = false;
             }
         }
     }
 
     public static void output(String type) {
-        Figure figure = new Figure();
-        switch (type) {
-            case "CIRCLE":
-                figure = new Circle(points);
-                break;
-            case "SQUARE":
-                figure = new Square(points);
-                break;
-            case "RECTANGLE":
-                figure = new Rectangle(points);
-                break;
-            case "TRIANGLE":
-                figure = new Triangle(points);
-                break;
-            case "PARALLELOGRAM":
-                figure = new Parallelogram(points);
-                break;
-            case "FIGURE":
-                figure = new Figure();
-                break;
-            case "SPHERE":
-                figure = new Sphere(points);
-                break;
-            case "TRUNCATED_SPHERE":
-                figure = new TruncatedSphere(points);
-                break;
-            case "CYLINDER":
-                figure = new Cylinder(points);
-                break;
-            case "CONE":
-                figure = new Cone(points);
-                break;
-            case "POLYGON":
-                figure = new Polygon(points);
-                break;
-        }
-        countingOutput(figure, type);
+        Figure figure = switch (type) {
+            case "CIRCLE" -> new Circle(points);
+            case "SQUARE" -> new Square(points);
+            case "RECTANGLE" -> new Rectangle(points);
+            case "TRIANGLE" -> new Triangle(points);
+            case "PARALLELOGRAM" -> new Parallelogram(points);
+            case "FIGURE" -> new Figure();
+            case "SPHERE" -> new Sphere(points);
+            case "TRUNCATED_SPHERE" -> new TruncatedSphere(points);
+            case "CYLINDER" -> new Cylinder(points);
+            case "CONE" -> new Cone(points);
+            case "POLYGON" -> new Polygon(points);
+            default -> new Figure();
+        };
+        countingOutput(figure);
         points.clear();
     }
 
-    public static void countingOutput(Figure figure, String type) {
+    public static void countingOutput(Figure figure) {
 
         figure.coordinates();
         if (figure.isValid()) {
             figure.square();
             figure.perimeter();
-        } else {
-            System.out.println("Please, retype");
-            points.clear();
         }
+        points.clear();
     }
 }
