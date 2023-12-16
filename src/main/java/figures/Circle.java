@@ -19,17 +19,20 @@ public class Circle extends Figure {
         radius = section(pointA, pointB);
     }
 
+    @Override
     public void coordinates() {
         boolean wrongCoords = checkIsDot(pointA, pointB);
         isValid = !(wrongCoords || !isAmount);
         coordinates(isValid ? VALID : INVALID);
     }
 
+    @Override
     public void square() {
         double sq = Math.pow(radius, VOZV) * Math.PI;
         square(sq);
     }
 
+    @Override
     public void perimeter() {
         double per = TWO * Math.PI * radius;
         perimeter(per);

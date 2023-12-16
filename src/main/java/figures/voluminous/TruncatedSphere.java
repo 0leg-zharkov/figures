@@ -30,6 +30,7 @@ public class TruncatedSphere extends Figure {
         height = radius - Math.abs(pointC.z());
     }
 
+    @Override
     public void coordinates() {
         boolean isDot = checkIsDot(pointA, pointB, pointC);
         boolean isCircle = checkIsDot(pointA, pointB);
@@ -39,6 +40,7 @@ public class TruncatedSphere extends Figure {
         super.coordinates(isValid ? VALID : INVALID);
     }
 
+    @Override
     public void square() {
         double sq = TWO * Math.PI * radius * height;
         super.square(sq);

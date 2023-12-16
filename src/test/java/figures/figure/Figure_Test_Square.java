@@ -10,7 +10,7 @@ import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class FigureTest {
+public class Figure_Test_Square {
 
     private final PrintStream standardOut = System.out;
     private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
@@ -26,25 +26,7 @@ public class FigureTest {
 
         figure.square();
 
-        assertEquals("The figure is valid", outputStreamCaptor.toString().trim());
-    }
-
-    @Test
-    public void testPerimeter() {
-        Figure figure = new Figure();
-
-        figure.perimeter();
-
-        assertEquals("The figure perimeter 4,00", outputStreamCaptor.toString().trim());
-    }
-
-    @Test
-    public void testCoordinate() {
-        Figure figure = new Figure();
-
-        figure.coordinates();
-
-        assertEquals("The figure is valid", outputStreamCaptor.toString().trim());
+        assertEquals("The figure has no area", outputStreamCaptor.toString().trim());
     }
 
     @AfterEach

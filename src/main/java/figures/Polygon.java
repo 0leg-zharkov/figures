@@ -16,6 +16,7 @@ public class Polygon extends Figure {
         isValid = points.size() >= THREE;
     }
 
+    @Override
     public void coordinates() {
         coordinates(isValid ? VALID : INVALID);
     }

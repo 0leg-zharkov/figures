@@ -22,6 +22,7 @@ public class Parallelogram extends Figure {
         isAmount = points.size() == FOUR;
     }
 
+    @Override
     public void square() {
         double diag = section(pointB, pointD);
         double AB = section(pointA, pointB);
@@ -41,6 +42,7 @@ public class Parallelogram extends Figure {
         coordinates(isValid ? VALID : INVALID);
     }
 
+    @Override
     public void perimeter() {
         double per = section(pointA, pointB) + section(pointB, pointC)
                 + section(pointC, pointD)

@@ -27,7 +27,8 @@ public class Triangle extends Figure {
         CASide = section(pointC, pointA);
         perimeter = ABSide + BCSide + CASide;
     }
-    
+
+    @Override
     public void coordinates() {
         boolean isWrongCoords = checkIsDot(pointA, pointB, pointC);
         boolean checkSides = ABSide < BCSide + CASide
@@ -38,6 +39,7 @@ public class Triangle extends Figure {
         coordinates(isValid ? VALID : INVALID);
     }
 
+    @Override
     public void square() {
         sq = getSquare();
         square(sq);
@@ -50,6 +52,7 @@ public class Triangle extends Figure {
         return sq;
     }
 
+    @Override
     public void perimeter() {
         perimeter(perimeter);
     }

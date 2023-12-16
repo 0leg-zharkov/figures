@@ -29,6 +29,7 @@ public class Cylinder extends Figure {
         }
     }
 
+    @Override
     public void coordinates() {
 
         boolean isDot = checkIsDot(pointA, pointB, pointC);
@@ -41,6 +42,7 @@ public class Cylinder extends Figure {
         coordinates(isValid ? VALID : INVALID);
     }
 
+    @Override
     public void square() {
         double radius = isDown ? section(pointA, pointC) : section(pointB, pointC);
         double circlesSquare = TWO * Math.PI * Math.pow(radius, TWO);

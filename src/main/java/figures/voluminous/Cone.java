@@ -26,6 +26,7 @@ public class Cone extends Figure {
         isAmount = points.size() == THREE;
     }
 
+    @Override
     public void coordinates() {
         boolean isDot = checkIsDot(pointA, pointB, pointC);
         boolean isSection = checkIsDot(pointA, pointB);
@@ -36,6 +37,7 @@ public class Cone extends Figure {
         coordinates(isValid ? VALID : INVALID);
     }
 
+    @Override
     public void square() {
         double radius = section(pointA, pointB);
         double obrazuyush = section(pointC, pointB);

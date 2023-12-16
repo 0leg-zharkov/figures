@@ -20,12 +20,14 @@ public class Sphere extends Circle {
         }
     }
 
+    @Override
     public void coordinates() {
         boolean wrongCoords = checkIsDot(pointA, pointB);
         isValid = !(wrongCoords || !isAmount || !checkLen);
         coordinates(isValid ? VALID : INVALID);
     }
 
+    @Override
     public void square() {
         double sq = FOUR * Math.pow(radius, VOZV) * Math.PI;
         square(sq);
