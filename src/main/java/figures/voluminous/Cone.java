@@ -17,6 +17,12 @@ public class Cone extends Figure {
         pointA = points.get(0);
         pointB = points.get(1);
         pointC = points.get(2);
+        for (Point point : points) {
+            if (point.len() == TWO) {
+                checkLen = false;
+                break;
+            }
+        }
         isAmount = points.size() == THREE;
     }
 
@@ -26,8 +32,8 @@ public class Cone extends Figure {
         boolean isCircle = checkIsDot(pointA, pointC);
         boolean isNinetyDegree = isRightAngle(pointA, pointB, pointC);
         boolean check = isDot || isSection || isCircle || !isNinetyDegree;
-        isValid = !check || !isAmount;
-        coordinates(check ? INVALID : VALID);
+        isValid = !check && isAmount && checkLen;
+        coordinates(isValid ? VALID : INVALID);
     }
 
     public void square() {

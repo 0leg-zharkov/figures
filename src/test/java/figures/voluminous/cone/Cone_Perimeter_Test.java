@@ -1,7 +1,6 @@
-package figures.voluminous.cylinder;
+package figures.voluminous.cone;
 
 import figures.voluminous.Cone;
-import figures.voluminous.Cylinder;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,7 +10,7 @@ import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class CylinderCoordinatesTest extends CylinderObject{
+public class Cone_Perimeter_Test extends ConeObject{
 
     private final PrintStream standardOut = System.out;
     private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
@@ -23,12 +22,12 @@ public class CylinderCoordinatesTest extends CylinderObject{
     }
 
     @Test
-    public void testCoordinates() {
-        Cylinder cylinder = getCylinder();
+    public void testPerimeter() {
+        Cone cone = getCone();
 
-        cylinder.coordinates();
+        cone.perimeter();
 
-        assertEquals("The figure is valid", outputStreamCaptor.toString().trim());
+        assertEquals("The figure has no perimeter", outputStreamCaptor.toString().trim());
     }
 
     @AfterEach

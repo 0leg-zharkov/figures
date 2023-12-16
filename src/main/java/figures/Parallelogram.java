@@ -38,7 +38,7 @@ public class Parallelogram extends Figure {
         boolean areSidesParrallel = isParallel(pointA, pointB, pointD, pointC);
         boolean check = areSidesEqls && areSidesParrallel;
         isValid = check && isAmount;
-        coordinates(check ? VALID : INVALID);
+        coordinates(isValid ? VALID : INVALID);
     }
 
     public void perimeter() {

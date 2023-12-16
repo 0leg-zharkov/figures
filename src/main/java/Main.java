@@ -2,7 +2,6 @@ import figures.*;
 import figures.voluminous.*;
 import point.Point;
 
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -13,7 +12,6 @@ public class Main {
 
     static final Pattern p = Pattern.compile("(-?\\d+\\s-?\\d+)(\\s-?\\d+)?");
     static Scanner scanner = new Scanner(System.in);
-    //не забыть отчистить список
     static List<Point> points = new ArrayList<>();
 
     public static void main(String[] args) {
@@ -59,6 +57,7 @@ public class Main {
     }
 
     public static void output(String type) {
+
         Figure figure = switch (type) {
             case "CIRCLE" -> new Circle(points);
             case "SQUARE" -> new Square(points);
@@ -71,8 +70,12 @@ public class Main {
             case "CYLINDER" -> new Cylinder(points);
             case "CONE" -> new Cone(points);
             case "POLYGON" -> new Polygon(points);
-            default -> new Figure();
+            default -> null;
         };
+        if (figure == null) {
+            System.out.println("please, retype");
+            return;
+        }
         countingOutput(figure);
         points.clear();
     }

@@ -8,9 +8,9 @@ import static nums.AllNums.*;
 
 public class Circle extends Figure {
 
-    private Point pointA;
-    private Point pointB;
-    double radius;
+    protected Point pointA;
+    protected Point pointB;
+    protected double radius;
 
     public Circle(List<Point> points) {
         pointA = points.get(0);
@@ -21,8 +21,8 @@ public class Circle extends Figure {
 
     public void coordinates() {
         boolean wrongCoords = checkIsDot(pointA, pointB);
-        isValid = !wrongCoords || !isAmount;
-        coordinates(wrongCoords ? INVALID : VALID);
+        isValid = !(wrongCoords || !isAmount);
+        coordinates(isValid ? VALID : INVALID);
     }
 
     public void square() {

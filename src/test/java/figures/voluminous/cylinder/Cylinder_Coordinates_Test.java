@@ -1,7 +1,6 @@
-package figures.voluminous.sphere;
+package figures.voluminous.cylinder;
 
 import figures.voluminous.Cylinder;
-import figures.voluminous.Sphere;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,7 +10,7 @@ import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class SphereCoordinatesTest extends SphereObject{
+public class Cylinder_Coordinates_Test extends CylinderObject{
 
     private final PrintStream standardOut = System.out;
     private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
@@ -24,9 +23,9 @@ public class SphereCoordinatesTest extends SphereObject{
 
     @Test
     public void testCoordinates() {
-        Sphere sphere = getSphere();
+        Cylinder cylinder = getCylinder();
 
-        sphere.coordinates();
+        cylinder.coordinates();
 
         assertEquals("The figure is valid", outputStreamCaptor.toString().trim());
     }

@@ -21,16 +21,22 @@ public class TruncatedSphere extends Figure {
         pointC = points.get(2);
         radius = section(pointA, pointB);
         isAmount = points.size() == THREE;
+        for (Point point : points) {
+            if (point.len() == TWO) {
+                checkLen = false;
+                break;
+            }
+        }
         height = radius - Math.abs(pointC.z());
     }
 
     public void coordinates() {
         boolean isDot = checkIsDot(pointA, pointB, pointC);
-        boolean isCircle = pointA.x() == pointB.x() && pointA.y() == pointB.y() && pointA.z() == pointB.z();
-        boolean isSection = pointA.x() == pointC.x() && pointA.y() == pointC.y() && pointA.z() == pointC.z();
+        boolean isCircle = checkIsDot(pointA, pointB);
+        boolean isSection = checkIsDot(pointA, pointC);
         boolean check = isCircle || isDot || isSection;
-        isValid = !check || !isAmount;
-        super.coordinates(check ? INVALID : VALID);
+        isValid = !check && isAmount && checkLen;
+        super.coordinates(isValid ? VALID : INVALID);
     }
 
     public void square() {

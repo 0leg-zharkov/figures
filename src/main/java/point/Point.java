@@ -31,4 +31,8 @@ public class Point {
     public double z() {
         return z;
     }
+
+    public int len() {
+        return len;
+    }
 }

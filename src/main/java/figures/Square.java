@@ -21,6 +21,6 @@ public class Square extends Parallelogram {
         boolean isNinetyDegree = isRightAngle(pointA, pointB, pointD);
         boolean check = isDiagEqls && areAllSidesEqls && isNinetyDegree;
         isValid = check && isAmount;
-        coordinates(check ? VALID : INVALID);
+        coordinates(isValid ? VALID : INVALID);
     }
 }

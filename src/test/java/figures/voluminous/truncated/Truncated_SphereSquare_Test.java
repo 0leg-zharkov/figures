@@ -1,7 +1,6 @@
-package figures.voluminous.cone;
+package figures.voluminous.truncated;
 
-import figures.Triangle;
-import figures.voluminous.Cone;
+import figures.voluminous.TruncatedSphere;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,7 +10,7 @@ import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class ConeCoordinatesTest extends ConeObject{
+public class Truncated_SphereSquare_Test extends TruncatedSphereObject{
 
     private final PrintStream standardOut = System.out;
     private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
@@ -23,12 +22,12 @@ public class ConeCoordinatesTest extends ConeObject{
     }
 
     @Test
-    public void testCoordinates() {
-        Cone cone = getCone();
+    public void testSquare() {
+        TruncatedSphere truncatedSphere = getTruncatedSphere();
 
-        cone.coordinates();
+        truncatedSphere.square();
 
-        assertEquals("The figure is valid", outputStreamCaptor.toString().trim());
+        assertEquals("The figure area 18,85", outputStreamCaptor.toString().trim());
     }
 
     @AfterEach

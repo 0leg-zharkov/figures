@@ -1,6 +1,5 @@
 package figures.voluminous.truncated;
 
-import figures.voluminous.Sphere;
 import figures.voluminous.TruncatedSphere;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -11,7 +10,7 @@ import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class TruncatedSphereCoordinatesTest extends TruncatedSphereObject{
+public class TruncatedSphere_Coordinates_Test extends TruncatedSphereObject{
 
     private final PrintStream standardOut = System.out;
     private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();

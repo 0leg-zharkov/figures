@@ -20,6 +20,6 @@ public class Rectangle extends Parallelogram {
         boolean isNinetyDegree = isRightAngle(pointA, pointB, pointD);
         boolean check = diag && areSidesEqls && isNinetyDegree;
         isValid = check && isAmount;
-        coordinates(check ? VALID : INVALID);
+        coordinates(isValid ? VALID : INVALID);
     }
 }

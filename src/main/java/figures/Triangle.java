@@ -29,21 +29,17 @@ public class Triangle extends Figure {
     }
     
     public void coordinates() {
-        boolean isWrongCoords = pointA.x() == pointB.x()
-                && pointA.y() == pointB.y()
-                && pointB.x() == pointC.x();
+        boolean isWrongCoords = checkIsDot(pointA, pointB, pointC);
         boolean checkSides = ABSide < BCSide + CASide
                 && BCSide < ABSide + CASide
                 && CASide < ABSide + BCSide;
         boolean check = checkSides && !isWrongCoords;
         isValid = check && isAmount;
-        coordinates(check ? VALID : INVALID);
+        coordinates(isValid ? VALID : INVALID);
     }
 
     public void square() {
-        double poluperimeter = perimeter / 2;
-        sq = Math.sqrt(poluperimeter
-                * (poluperimeter - ABSide) * (poluperimeter - BCSide) * (poluperimeter - CASide));
+        sq = getSquare();
         square(sq);
     }
 

@@ -18,7 +18,6 @@ public class Parallelogram_Coordinates_Test extends ParallelogramObject{
 
     @BeforeEach
     public void set() {
-
         System.setOut(new PrintStream(outputStreamCaptor));
     }
 

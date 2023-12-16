@@ -11,6 +11,7 @@ public class Figure {
 
     protected boolean isValid = true;
     protected boolean isAmount;
+    protected boolean checkLen = true;
 
     public void coordinates(String validation) {
         System.out.printf("The figure is %s \n", validation);
@@ -62,6 +63,13 @@ public class Figure {
         double CDx = pointC.x() - pointD.x();
         double CDy = pointC.y() - pointD.y();
         double CDz = pointC.z() - pointD.z();
+        if (ABx == 0 && CDx == 0) {
+            return ABy / CDy == ABz / CDz;
+        } else if (ABy == 0 && CDy == 0) {
+            return ABx / CDx == ABz / CDz;
+        } else if (ABz == 0 && CDz == 0) {
+            return ABx / CDx == ABy / CDy;
+        }
         return ABx / CDx == ABy / CDy && ABx / CDx == ABz / CDz;
     }
 

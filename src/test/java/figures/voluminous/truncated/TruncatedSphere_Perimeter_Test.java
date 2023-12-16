@@ -1,6 +1,6 @@
-package figures.voluminous.cone;
+package figures.voluminous.truncated;
 
-import figures.voluminous.Cone;
+import figures.voluminous.TruncatedSphere;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,7 +10,7 @@ import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class ConePerimeterTest extends ConeObject{
+public class TruncatedSphere_Perimeter_Test extends TruncatedSphereObject{
 
     private final PrintStream standardOut = System.out;
     private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
@@ -23,9 +23,9 @@ public class ConePerimeterTest extends ConeObject{
 
     @Test
     public void testPerimeter() {
-        Cone cone = getCone();
+        TruncatedSphere truncatedSphere = getTruncatedSphere();
 
-        cone.perimeter();
+        truncatedSphere.perimeter();
 
         assertEquals("The figure has no perimeter", outputStreamCaptor.toString().trim());
     }

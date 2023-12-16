@@ -1,7 +1,6 @@
-package figures.voluminous.truncated;
+package figures.voluminous.sphere;
 
 import figures.voluminous.Sphere;
-import figures.voluminous.TruncatedSphere;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,7 +10,7 @@ import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class TruncatedSpherePerimeterTest extends TruncatedSphereObject{
+public class Sphere_Coordinates_Test extends SphereObject{
 
     private final PrintStream standardOut = System.out;
     private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
@@ -23,12 +22,12 @@ public class TruncatedSpherePerimeterTest extends TruncatedSphereObject{
     }
 
     @Test
-    public void testPerimeter() {
-        TruncatedSphere truncatedSphere = getTruncatedSphere();
+    public void testCoordinates() {
+        Sphere sphere = getSphere();
 
-        truncatedSphere.perimeter();
+        sphere.coordinates();
 
-        assertEquals("The figure has no perimeter", outputStreamCaptor.toString().trim());
+        assertEquals("The figure is valid", outputStreamCaptor.toString().trim());
     }
 
     @AfterEach
